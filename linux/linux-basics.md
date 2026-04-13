@@ -54,6 +54,14 @@
 
 **Real-world example for nano:** You need to edit your nginx config file. You run `nano /etc/nginx/nginx.conf` and make the change right there in the terminal.
 
+## Hands-on practice I did today
+
+**systemctl with nginx:**
+1. Stopped nginx – `sudo systemctl stop nginx`
+2. Checked status – it was inactive (dead)
+3. Started it again – `sudo systemctl start nginx`
+4. Checked status again – it was active (running)
+
 ## What confused me
 
 I got confused between `grep` and `find` at first.
@@ -68,6 +76,3 @@ Also got confused about groups vs others. Then I learned:
 One more thing – I messed up the space in `chmod`. I wrote `u - x db_response.txt` with spaces everywhere. Then I figured out the correct syntax is `u-x` with no spaces.
 
 Also got confused between `du` and `df` at first. Then I understood – `df` looks at the whole disk, `du` looks at specific folders. Big picture vs detailed search.
-## What i want to learn next
-- bash
-- systemctl in detailWhat I want to learn next
