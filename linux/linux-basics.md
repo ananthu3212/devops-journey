@@ -16,6 +16,9 @@
 - `du` – how much space a specific folder is using
 - `ps aux` – show all running processes
 - `kill` – stop a running process
+- `tail` – show the last few lines of a file
+- `tail -f` – follow a file in real time as new lines get added
+- `systemctl` – control system services (start, stop, restart, enable, status)
 
 ## What I understood
 
@@ -31,8 +34,13 @@
 - `du` tells you disk usage at the folder level
 - `ps aux` shows every process running on the system with details
 - `kill` lets you stop a process by its PID
+- `tail` shows the end of a log file – useful for checking recent activity
+- `tail -f` keeps watching the file and shows new lines as they come – great for monitoring live logs
+- `systemctl` is how you manage services like nginx, docker, ssh
 
 **Real-world example for df vs du:** Your server disk is 90% full. `df` tells you the disk is almost full. But which folder is eating all the space? You use `du` to find the culprit.
+
+**Real-world example for tail -f:** You just started your app and it's crashing. You run `tail -f /var/log/nginx/error.log` and watch the errors appear live as they happen.
 
 ## What confused me
 
