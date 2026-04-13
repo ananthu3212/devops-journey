@@ -22,6 +22,7 @@
 - `>` – output redirection, sends command output to a file and overwrites it
 - `>>` – append, sends command output to a file and adds it to the end without deleting what's already there
 - `ps aux | grep processname` – find a specific process by name
+- `nano` – a simple text editor in the terminal to create and edit files
 
 ## What I understood
 
@@ -43,12 +44,15 @@
 - `>` overwrites a file with new output
 - `>>` adds new output to the end of an existing file
 - `ps aux | grep processname` is how you check if a specific process is running
+- `nano` is a quick way to edit config files or write scripts without leaving the terminal
 
 **Real-world example for df vs du:** Your server disk is 90% full. `df` tells you the disk is almost full. But which folder is eating all the space? You use `du` to find the culprit.
 
 **Real-world example for tail -f:** You just started your app and it's crashing. You run `tail -f /var/log/nginx/error.log` and watch the errors appear live as they happen.
 
 **Real-world example for output redirection:** You run `ps aux > processes.txt` to save all running processes to a file. Later you run `ps aux | grep nginx >> processes.txt` to add nginx processes to the same file without losing what was already there.
+
+**Real-world example for nano:** You need to edit your nginx config file. You run `nano /etc/nginx/nginx.conf` and make the change right there in the terminal.
 
 ## What confused me
 
@@ -64,3 +68,6 @@ Also got confused about groups vs others. Then I learned:
 One more thing – I messed up the space in `chmod`. I wrote `u - x db_response.txt` with spaces everywhere. Then I figured out the correct syntax is `u-x` with no spaces.
 
 Also got confused between `du` and `df` at first. Then I understood – `df` looks at the whole disk, `du` looks at specific folders. Big picture vs detailed search.
+## What i want to learn next
+- bash
+- systemctl in detailWhat I want to learn next
