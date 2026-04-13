@@ -19,6 +19,9 @@
 - `tail` – show the last few lines of a file
 - `tail -f` – follow a file in real time as new lines get added
 - `systemctl` – control system services (start, stop, restart, enable, status)
+- `>` – output redirection, sends command output to a file and overwrites it
+- `>>` – append, sends command output to a file and adds it to the end without deleting what's already there
+- `ps aux | grep processname` – find a specific process by name
 
 ## What I understood
 
@@ -37,10 +40,15 @@
 - `tail` shows the end of a log file – useful for checking recent activity
 - `tail -f` keeps watching the file and shows new lines as they come – great for monitoring live logs
 - `systemctl` is how you manage services like nginx, docker, ssh
+- `>` overwrites a file with new output
+- `>>` adds new output to the end of an existing file
+- `ps aux | grep processname` is how you check if a specific process is running
 
 **Real-world example for df vs du:** Your server disk is 90% full. `df` tells you the disk is almost full. But which folder is eating all the space? You use `du` to find the culprit.
 
 **Real-world example for tail -f:** You just started your app and it's crashing. You run `tail -f /var/log/nginx/error.log` and watch the errors appear live as they happen.
+
+**Real-world example for output redirection:** You run `ps aux > processes.txt` to save all running processes to a file. Later you run `ps aux | grep nginx >> processes.txt` to add nginx processes to the same file without losing what was already there.
 
 ## What confused me
 
