@@ -12,6 +12,10 @@
 - `find . -name "health*.txt"` – find txt files that start with "health"
 - `grep "word" file.txt` – find a specific word inside a file
 - `chmod u-x file.txt` – remove execute permission from the owner
+- `df` – how much space is left on the entire disk
+- `du` – how much space a specific folder is using
+- `ps aux` – show all running processes
+- `kill` – stop a running process
 
 ## What I understood
 
@@ -22,7 +26,13 @@
 - How to search for files and only pull out specific words from them
 - `find` is for finding files and folders by name
 - `grep` is for finding things inside a file
-- `chmod` changes permissions – u for owner/ user, g for group, o for others, + to add, - to remove
+- `chmod` changes permissions – u for owner/user, g for group, o for others, + to add, - to remove
+- `df` tells you disk space at the system level (whole disk)
+- `du` tells you disk usage at the folder level
+- `ps aux` shows every process running on the system with details
+- `kill` lets you stop a process by its PID
+
+**Real-world example for df vs du:** Your server disk is 90% full. `df` tells you the disk is almost full. But which folder is eating all the space? You use `du` to find the culprit.
 
 ## What confused me
 
@@ -36,3 +46,5 @@ Also got confused about groups vs others. Then I learned:
 - **Others** – Everyone else who is not the owner and not part of that group.
 
 One more thing – I messed up the space in `chmod`. I wrote `u - x db_response.txt` with spaces everywhere. Then I figured out the correct syntax is `u-x` with no spaces.
+
+Also got confused between `du` and `df` at first. Then I understood – `df` looks at the whole disk, `du` looks at specific folders. Big picture vs detailed search.
