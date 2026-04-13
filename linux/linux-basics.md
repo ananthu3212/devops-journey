@@ -62,7 +62,7 @@
 3. Started it again – `sudo systemctl start nginx`
 4. Checked status again – it was active (running)
 
-## What confused me
+## What confused me.
 
 I got confused between `grep` and `find` at first.
 
