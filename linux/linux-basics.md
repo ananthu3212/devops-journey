@@ -11,6 +11,7 @@
 - `find . -name "*.txt"` – find all txt files in current folder
 - `find . -name "health*.txt"` – find txt files that start with "health"
 - `grep "word" file.txt` – find a specific word inside a file
+- `chmod u-x file.txt` – remove execute permission from the owner
 
 ## What I understood
 
@@ -21,6 +22,7 @@
 - How to search for files and only pull out specific words from them
 - `find` is for finding files and folders by name
 - `grep` is for finding things inside a file
+- `chmod` changes permissions – u for owner/ user, g for group, o for others, + to add, - to remove
 
 ## What confused me
 
@@ -32,3 +34,5 @@ Also got confused about groups vs others. Then I learned:
 
 - **Groups** – If 10 developers are working on the same thing, instead of setting permissions for each person one by one, they all get the same group permissions.
 - **Others** – Everyone else who is not the owner and not part of that group.
+
+One more thing – I messed up the space in `chmod`. I wrote `u - x db_response.txt` with spaces everywhere. Then I figured out the correct syntax is `u-x` with no spaces.
