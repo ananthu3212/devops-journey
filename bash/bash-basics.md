@@ -8,6 +8,7 @@
 - `cat` – show content of a file
 - `chmod u+x` – add execute permission for owner
 - `./script.sh` – run a script
+- `sudo` – run a command as root (administrator)
 
 ## What I learned about variables
 
@@ -22,6 +23,7 @@ else
 fi
 
 -gt means greater than.
+= means equal to (for strings).
 
 ## What I learned about awk
 
@@ -63,6 +65,21 @@ if [ $DISK -gt 80 ]; then
 else
     echo "disk is ok"
 fi
+
+## Script 3: service-check.sh
+
+#!/bin/bash
+STATUS=$(systemctl is-active nginx)
+if [ $STATUS = "active" ]; then
+    echo "the server is running"
+else
+    sudo systemctl start nginx
+    echo "server is restarted"
+fi
+
+## What sudo does
+
+sudo runs a command as root (administrator). Normal users cannot start system services like nginx. sudo gives you temporary admin power to do it.
 
 ## Mistakes I made
 
