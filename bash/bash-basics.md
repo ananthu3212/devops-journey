@@ -69,10 +69,14 @@ fi
 ## Script 3: service-check.sh
 
 #!/bin/bash
+# Prüft ob nginx läuft
 STATUS=$(systemctl is-active nginx)
+
+# Wenn aktiv, Bestätigung ausgeben
 if [ $STATUS = "active" ]; then
     echo "the server is running"
 else
+    # Wenn nicht aktiv, starten mit sudo
     sudo systemctl start nginx
     echo "server is restarted"
 fi
@@ -101,3 +105,8 @@ Mistake 4: No space after tr -d
 
 Mistake 5: Missing execute permission
 - Fix: chmod u+x script.sh
+
+Mistake 6: Forgot sudo inside service-check.sh
+- What happened: Ran the script without sudo, systemctl tried to start nginx but failed with permission denied, then asked for password
+- Fix: Added sudo before systemctl start nginx
+- What I learned: sudo is required when a normal user needs to control system services
