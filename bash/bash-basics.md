@@ -1,4 +1,4 @@
-# Bash Basics — Day 1
+# Bash Basics — Day 2
 
 ## Commands I learned today
 
@@ -9,6 +9,8 @@
 - `chmod u+x` – add execute permission for owner
 - `./script.sh` – run a script
 - `sudo` – run a command as root (administrator)
+- `tar -czf` – create compressed archive (.tar.gz)
+- `date +"%Y-%m-%d_%H-%M-%S"` – generate timestamp for filenames
 
 ## What I learned about variables
 
@@ -81,6 +83,15 @@ else
     echo "server is restarted"
 fi
 
+## Script 4: backup.sh
+
+#!/bin/bash
+BACKUP_DIR=~/backups
+mkdir -p $BACKUP_DIR
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+tar -czf $BACKUP_DIR/backup-$TIMESTAMP.tar.gz ~/test-data
+echo "Backup completed: $BACKUP_DIR/backup-$TIMESTAMP.tar.gz"
+
 ## What sudo does
 
 sudo runs a command as root (administrator). Normal users cannot start system services like nginx. sudo gives you temporary admin power to do it.
@@ -107,6 +118,16 @@ Mistake 5: Missing execute permission
 - Fix: chmod u+x script.sh
 
 Mistake 6: Forgot sudo inside service-check.sh
-- What happened: Ran the script without sudo, systemctl tried to start nginx but failed with permission denied, then asked for password
+- What happened: Ran the script without sudo, systemctl tried to start nginx but failed with permission denied
 - Fix: Added sudo before systemctl start nginx
 - What I learned: sudo is required when a normal user needs to control system services
+
+Mistake 7: Confused about mkdir -p position in backup.sh
+- What confused me: I thought mkdir -p should be first line, but it was second line after BACKUP_DIR variable
+- What I tried: Ran script both ways
+- What I saw: If mkdir -p comes before BACKUP_DIR, it still works but BACKUP_DIR variable is empty when used
+- What I learned: Order matters. BACKUP_DIR must be defined first so mkdir -p knows where to create the directory
+
+Mistake 8: Confused why $ was not in BACKUP_DIR=~/backups
+- What confused me: I thought variables always need $ sign
+- What I learned: $ is only used when accessing a variable, not when creating it. BACKUP_DIR=~/backups creates it. $BACKUP_DIR accesses it.
