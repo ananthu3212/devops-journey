@@ -131,3 +131,59 @@ Mistake 7: Confused about mkdir -p position in backup.sh
 Mistake 8: Confused why $ was not in BACKUP_DIR=~/backups
 - What confused me: I thought variables always need $ sign
 - What I learned: $ is only used when accessing a variable, not when creating it. BACKUP_DIR=~/backups creates it. $BACKUP_DIR accesses it.
+
+# Bash Basics — Day 3
+
+## Commands I learned today
+
+- for loop - iterate through a list of items
+- while loop - repeat until a condition becomes false
+- $(( )) - perform arithmetic in Bash
+
+## Comparison operators I learned
+
+-lt = less than
+-le = less than or equal
+-gt = greater than
+-ge = greater than or equal
+-eq = equal to
+-ne = not equal to
+
+## Script: loop-check.sh
+
+#!/bin/bash
+server="server1 server2 server3"
+
+for i in $server
+do
+    echo "checking : $i"
+done
+
+## What I learned about for loops
+
+A for loop goes through a list of items one by one. I put three server names in a variable, and the loop prints each one.
+
+## What I learned about while loops
+
+A while loop keeps running as long as a condition is true. When the condition becomes false, the loop stops.
+
+## What I learned about math in Bash
+
+To do math, use $(( )). Example: i=$((i+1)) increments i by 1.
+
+## Mistakes I made today
+
+Mistake 1: Missing # in shebang
+Wrong: !/bin/bash
+Fix: #!/bin/bash
+
+Mistake 2: Spaces around = in variable assignment
+Wrong: servers = "server1 server2 server3"
+Fix: servers="server1 server2 server3"
+
+Mistake 3: Wrong math syntax
+Wrong: i=i+1
+Fix: i=$((i+1))
+
+Mistake 4: No space between prompt and command in read
+Fix: Always add space after read -p "question: " variable
