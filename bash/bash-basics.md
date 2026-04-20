@@ -203,3 +203,64 @@ Fix: i=$((i+1))
 
 Mistake 4: No space between prompt and command in read
 Fix: Always add space after read -p "question: " variable
+
+## Day 4 - Functions
+
+### What is a function
+
+A function lets me write code once and use it many times. Instead of writing the same echo or check logic 10 times, I write a function and call it whenever I need it.
+
+### Function syntax in Bash
+
+checkServer() {
+    echo "Checking: $1"
+}
+
+The function name is checkServer. The parentheses are empty. The code goes inside curly braces.
+
+### Parameters
+
+When I call a function with checkServer "web-server", inside the function $1 becomes "web-server". $2 would be the second parameter, $3 the third, and so on.
+
+### Calling a function
+
+Just write the name: checkServer "web-server"
+No parentheses. No brackets. Just the name and then the parameters.
+
+### Combining functions with loops and variables
+
+I can put server names in a variable, loop through them, and call a function for each one. That is what full-check.sh does.
+
+### Script: full-check.sh
+
+#!/bin/bash
+# Definiert eine Funktion die einen Server ueberprueft
+checkServer() {
+    echo "Checking: $1"
+    echo "status: ok"
+}
+
+# Definiert eine Liste mit Servernamen
+serverName="web-server db-server cache-server"
+
+# Schleife durchlaeuft jeden Server und ruft die Funktion auf
+for i in $serverName
+do
+    checkServer "$i"
+done
+
+### Difference between Java and Bash functions
+
+Java: public void checkServer(String name) { ... } then call with checkServer("web-server")
+Bash: checkServer() { echo "Checking: $1"; } then call with checkServer "web-server"
+
+No public, no void, no return type in Bash. No parentheses when calling. Parameters use $1, $2 not declared in the function signature.
+
+### Mistakes to watch for
+
+Mistake: Defining the function after calling it
+Bash reads top to bottom. If I call checkServer before defining it, Bash gives an error.
+
+Mistake: Using parentheses when calling
+Wrong: checkServer() "web-server"
+Fix: checkServer "web-server"
