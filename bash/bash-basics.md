@@ -132,16 +132,25 @@ Mistake 8: Confused why $ was not in BACKUP_DIR=~/backups
 - What confused me: I thought variables always need $ sign
 - What I learned: $ is only used when accessing a variable, not when creating it. BACKUP_DIR=~/backups creates it. $BACKUP_DIR accesses it.
 
-# Bash Basics — Day 3
+## Day 3 - Loops
 
-## Commands I learned today
+### For loop
+A for loop goes through a list of items one by one. Use it when you know what you want to loop through (like a list of servers).
 
-- for loop - iterate through a list of items
-- while loop - repeat until a condition becomes false
-- $(( )) - perform arithmetic in Bash
+### While loop
+A while loop keeps running as long as a condition is true. Use it when you want to loop until something changes (like reading a file line by line or counting until a number is reached).
 
-## Comparison operators I learned
+### Difference between for and while
+For loop = you know the list upfront. While loop = you keep going until a condition stops being true.
 
+### Storing a list in a variable
+servers="web-server db-server cache-server"
+Then loop through it with: for i in $servers
+
+### Math in Bash
+Use $(( )). Example: count=$((count + 1))
+
+### Comparison operators
 -lt = less than
 -le = less than or equal
 -gt = greater than
@@ -149,37 +158,44 @@ Mistake 8: Confused why $ was not in BACKUP_DIR=~/backups
 -eq = equal to
 -ne = not equal to
 
-## Script: loop-check.sh
+### Pattern matching with [[ ]]
+[[ $i == *db* ]] checks if the variable contains "db". The * means anything before or after. So *db* matches "db-server", "backend-db", "database".
 
+### Combining loops with if/else
+You can put if/else inside a loop. Example: loop through servers, if server name contains "db", print one message, else print another.
+
+### Scripts written
+
+**loop-check.sh**
 #!/bin/bash
 server="server1 server2 server3"
-
 for i in $server
 do
     echo "checking : $i"
 done
 
-## What I learned about for loops
+**server-status.sh**
+#!/bin/bash
+server="web-server db-server cache-server"
+for i in $server
+do
+    echo "Checking: $i"
+    if [[ $i == *db* ]]; then
+        echo "Database server detected"
+    else
+        echo "Regular server"
+    fi
+done
 
-A for loop goes through a list of items one by one. I put three server names in a variable, and the loop prints each one.
-
-## What I learned about while loops
-
-A while loop keeps running as long as a condition is true. When the condition becomes false, the loop stops.
-
-## What I learned about math in Bash
-
-To do math, use $(( )). Example: i=$((i+1)) increments i by 1.
-
-## Mistakes I made today
+### Mistakes made
 
 Mistake 1: Missing # in shebang
 Wrong: !/bin/bash
 Fix: #!/bin/bash
 
 Mistake 2: Spaces around = in variable assignment
-Wrong: servers = "server1 server2 server3"
-Fix: servers="server1 server2 server3"
+Wrong: servers = "web-server db-server"
+Fix: servers="web-server db-server"
 
 Mistake 3: Wrong math syntax
 Wrong: i=i+1
